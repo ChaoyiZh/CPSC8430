@@ -51,17 +51,13 @@ def train(args):
             # Forward pass
             outputs = model(video_feats, captions)
             loss = criterion(outputs.reshape(-1, len(train_set.vocab)), captions[:,1:].contiguous().view(-1))
-            # valid_outputs = outputs[mask]
-            # valid_captions = captions[mask]
-            # loss = criterion(valid_outputs.reshape(-1, len(train_set.vocab)), valid_captions.view(-1))
 
-            # 反向传播和优化
             loss.backward()
             optimizer.step()
 
             total_loss += loss.item()
 
-            if batch_idx % 100 == 0:  # 每100个batch打印一次损失
+            if batch_idx % 100 == 0:
                 print(f'Training Epoch: {epoch}, Batch: {batch_idx}, Loss: {loss.item()}')
                 print("The label of the first data in minibatch: ")
                 detokenize(captions[:,1:], train_set.vocab, video_ids)

@@ -23,11 +23,6 @@ def eval(epoch, args, model,test_loader, device, vocab):
                 outputs = torch.argmax(outputs, dim=-1)
                 detokenize(outputs, vocab, video_ids)
 
-    #
-    #         loss = criterion(outputs, captions.view(-1))
-    #         total_loss += loss.item()
-    # avg_loss = total_loss / len(test_loader)
-    # print(f'Traning Epoch [{epoch + 1}/{args.num_epoches}], Loss: {avg_loss:.4f}')
 
 
 

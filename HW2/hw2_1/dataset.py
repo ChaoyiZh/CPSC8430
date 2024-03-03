@@ -68,6 +68,5 @@ class VideoFeaturesDataset(Dataset):
         caption_length = len(caption_tokens)+2
         caption_tokens.extend([self.vocab["<pad>"]] * (self.max_caption_length - len(caption_tokens)))
         caption_tokens_tensor = torch.tensor(caption_tokens, dtype=torch.long)
-        # one_hot_captions = torch.nn.functional.one_hot(caption_tokens_tensor, num_classes=len(self.vocab))
 
         return torch.tensor(features, dtype=torch.float),caption_tokens_tensor, video_id, caption_length
