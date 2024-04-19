@@ -106,7 +106,7 @@ train_model(model=model,
             test_dataloader=test_dataloader,
             test_dataset=test_dataset,
             dataset=dataset,
-            epochs=2,
+            epochs=4,
             output_dir=output_dir,)
 
 print("Evaluating model on Test Set...")
